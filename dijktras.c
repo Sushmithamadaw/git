@@ -1,83 +1,89 @@
 #include<stdio.h>
-int n,d[10],p[10];
+#include<stdlib.h>
+int n,p[10],d[10];
 int cost[10][10];
-void diji();
-
-void diji(int src)
+void dijik(int source)
 {
-int s[10],i,j,v,min,u;
+int i,j,min,u,v,s[10];
 for(i=0;i<n;i++)
 {
+d[i]=cost[source][i];
 s[i]=0;
-p[i]=src;
-d[i]=cost[src][i];
+p[i]=source;
 }
-s[src]=1;
+s[source]=1;
 for(i=1;i<n;i++)
 {
-min=99,u=-1;
+min=99;
+u=-1;
 for(j=0;j<n;j++)
 {
 if(s[j]==0)
-if(d[j]<min){
+{
+if(d[j]<min) 
+{
 min=d[j];
 u=j;
 }
-
 }
-
+}
 if(u==-1)
 return;
 s[u]=1;
 for(v=0;v<n;v++)
 {
 if(s[v]==0)
-if(d[u]+cost[u][v]<d[u])
+{
+if(d[u]+cost[u][v]<d[v])
 {
 d[v]=d[u]+cost[u][v];
 p[v]=u;
 }
 }
 }
-}
+}}
 
-void short_path(int src,int dest)
-{
-int i;
-i=dest;
-while(i!=src)
-{
-printf("%d<-----",i);
-i=p[i];
-}
-printf("%d=%d",i,d[dest]);
-}
+ void print_path(int source,int dest)
+  {
+   int i;
+   i=dest;
+   while(i!=source)
+   {
+    printf("%d<--",i);
+    i=p[i];
+   }
+   printf("%d=%d",i,d[dest]);
+  }
 
 void main()
 {
-int src,i,j;
-printf("Enter the no of matrices");
-scanf("%d",&n);
-printf("Enter cost adjacency matrix:");
-for(i=0;i<n;i++)
-for(j=0;j<n;j++)
-scanf("%d",&cost[i][j]);
-for(i=0;i<n;i++)
-{
-for(j=0;j<n;j++)
-printf("%d\t",cost[i][j]);
-printf("\n");
+ int i,j,source;
+printf("Enter the number of vertices:");
+	scanf("%d",&n);
+	printf("Enter the adjacency matrix\n");
+	for(i=0;i<n;i++)
+	for(j=0;j<n;j++)	
+	scanf("%d",&cost[i][j]);
+  for(i=0;i<n;i++)
+   {
+    for(j=0;j<n;j++)
+    {
+     printf("%d\t",cost[i][j]);
+    }
+ printf("\n");
 }
-printf("Enter the source vertex");
-scanf("%d",&src);
-diji(src);
-printf("\nThe shortest path and distance are shown below\n");
-for(j=0;j<n;j++)
-{
-if(d[j]==99)
-printf("is not reachable from %d----->%d",src,j);
-else
-short_path(src,j);
-printf("\n");
+ printf("enter the source vertex\n");
+scanf("%d",&source);
+dijik(source);
+printf("The shortest path and Distance\n");
+ for(j=0;j<n;j++)
+ {
+ if(d[j]==99)
+  printf("Is not reacheble from %d-->%d",source,j);
+  else
+ print_path(source,j);
+ printf("\n");
+ }
 }
-}
+
+ 
