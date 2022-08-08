@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <script>
+        function fibonacci(){
+            var n=parseInt(prompt("Enter the no for fibonacci:"));
+            var f1=0,f2=1,f3;
+            document.write("<h2>Fibonacci sequence </h2><br>");
+            if(n==0){
+                document.write("Enter the number greater than zero");
+            }
+            else if(n==1){
+                document.write(f1);
+            }
+            else{
+                document.write(f1+""+f2);
+                for(var i=0;i<n-2;i++){
+                    f3=f1+f2;
+                    document.write(""+f3);
+                    f1=f2;
+                    f2=f3;
+                }
+            }
+        }
+        function firstN(){
+            var n=parseInt(prompt("Enter the limit:"));
+            var String="";
+            for(var i=1;i<=n;i++){
+                String+=i.toString()+"|"+(i*i).toString()+"\n";
+            }
+            alert(String);
+        }
+    </script>
+    <h2 onclick="fibonacci()">Fibonacci sequence<br></h2>
+    <h2 onclick="firstN()">Squares</h2>
+</body>
+</html>

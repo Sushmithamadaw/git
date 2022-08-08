@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label{
+            display: block;
+            font-size: 20px;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        total=0;
+        function add(fruits){
+            if(fruits.checked)
+            total+=parseInt(fruits.value);
+            else
+            total-=parseInt(fruits.value);
+            document.getElementById("res").innerHTML="Total is $"+total;
+        }
+        function findsum(){
+            var gt=total/100*1.50;
+            alert("Total cost is $"+gt);
+            return false;
+        }
+    </script>
+</head> 
+<body>
+    <form>
+        <label for="apple"><input onclick="add(this)" value="59" type="checkbox" name="apple" id="apple">Apple (59Cents each)</label>
+        <label for="orange"><input onclick="add(this)" value="49" type="checkbox" name="orange" id="orange">Orange (49Cents each)</label>
+        <label for="banana"><input onclick="add(this)" value="39" type="checkbox" name="banana" id="banana">Banana (39Cents each)</label>
+         <div id="res">$</div>
+         <input type="submit" value="submit" onclick="return findsum();">
+    </form>
+</body>
+</html>

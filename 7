@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function detail() {
+            
+var pb=document.getElementById("studpb");
+prg=0;
+var i;
+comp=document.getElementsByName("stud");
+for(i=0;i<comp.length;i++){
+if(comp[i].validity.valid){
+prg++;
+}
+}
+pb.value=prg*(100/comp.length);
+}
+    </script>
+</head>
+<body>
+    <form action="" method="post">
+        <label name="fname">Name</label>
+        <input type="text" name="stud" onchange="detail()" id="pp" required><br>
+        <label for="email">Email</label>
+        <input type="email" name="stud" onchange="detail()" id="email" required><br>
+        <label name="date">DOB</label>
+        <input type="date" name="stud" onchange="detail()" id="date" required><br>
+        <label name="Number">Mobile no</label>
+        <input type="number" name="stud" onchange="detail()" id="nm" required><br>
+        <label name="city">City</label>
+        <input type="text" name="stud" onchange="detail()" id="city" required><br>
+
+       
+        <progress id="studpb" value="0" max="100"></progress>
+
+        <div style="width:500px;" height="500px;"></div>
+        <video src="fav.mp4" autoplay controls></video>
+
+    </form>
+</body>
+</html>
